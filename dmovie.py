@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
+# 내가 만든 모듈(함수)를 포함
+# import function
+from function import my_print
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 data = requests.get('https://movie.daum.net/ranking/reservation',headers=headers)
 
@@ -23,7 +26,7 @@ for li in lis:
     rank = li.select_one("span.rank_num")
     name = li.select_one("div > strong > a")
     mp =  li.select_one("span.txt_grade")
-    print(f'{rank.text}위 {name.text} 평점 : {mp.text}점')
+    my_print(f'{rank.text}위 {name.text} 평점 : {mp.text}점')
 
 
 '''
